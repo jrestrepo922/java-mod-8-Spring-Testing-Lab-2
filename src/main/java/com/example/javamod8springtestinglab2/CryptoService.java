@@ -1,0 +1,18 @@
+package com.example.javamod8springtestinglab2;
+
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+@Service
+public class CryptoService {
+    public String getCoinPrice(){
+        String apiURL = "https://api.coincap.io/v2/assets/bitcoin";
+        RestTemplate restTemplate = new RestTemplate();
+        String coin = restTemplate.getForObject(apiURL, String.class);
+        String[] coinArray = coin.split(":|,");
+        String pricePerCoin = coinArray[18].replace("\"", "");
+        return pricePerCoin;
+    }
+}
+
+

@@ -13,9 +13,9 @@ public class CryptoControllerUnitTest {
         String priceOfBitcoin = "23896.4597915312141578";
         CryptoController cryptoController = new CryptoController(cryptoService);
         //Anywhere the getCoinPrice() method is called will return priceOfBitcoin string
-        when(cryptoService.getCoinPrice()).thenReturn(priceOfBitcoin);
-        String expected = "The price of one Bitcoin is 23896.4597915312141578";
-        String actual = cryptoController.getCrypto();
+        when(cryptoService.getCoinPrice("bitcoin")).thenReturn(priceOfBitcoin);
+        String expected = "The price of one bitcoin is 23896.4597915312141578";
+        String actual = cryptoController.getCrypto("bitcoin");
         assertEquals(expected, actual);
     }
 

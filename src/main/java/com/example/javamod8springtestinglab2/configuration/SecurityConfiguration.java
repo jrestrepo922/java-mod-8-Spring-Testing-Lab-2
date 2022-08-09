@@ -23,17 +23,22 @@ public class SecurityConfiguration {
     @Bean
     public  SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
 
-        http.authorizeRequests()
-                .antMatchers("/crypto")
-                .hasAuthority("admin");
+//        http.authorizeRequests()
+//                .antMatchers("/crypto")
+//                .hasAuthority("admin");
+//
+//         http.authorizeRequests()
+//                .anyRequest()
+//                .authenticated()
+//                .and()
+//                .oauth2Login()
+//                .and()
+//                .logout();
 
-         http.authorizeRequests()
-                .anyRequest()
-                .authenticated()
+        http.authorizeRequests()
+                .anyRequest().authenticated()
                 .and()
-                .formLogin()
-                .and()
-                .logout();
+                .oauth2Login();
 
          return http.build();
     }
